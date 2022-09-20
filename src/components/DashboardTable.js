@@ -185,7 +185,7 @@ export function DashboardTable({data = []}) {
                                         <div
                                             className="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b">
                                             <button
-                                                className="mr-4 text-white rounded bg-blue-500 hover:bg-blue-700 background-transparent uppercase px-6 py-2 text-xsm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                className="mr-4 text-white rounded bg-blue-500 hover:bg-blue-700 background-transparent uppercase px-6 py-2 text-xsm outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
                                                 type="button"
                                                 onClick={() => setShowModal(false)}
                                             >
