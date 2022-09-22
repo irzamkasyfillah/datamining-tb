@@ -17,18 +17,18 @@ function Panduan() {
         const req = await fetch(`https://backend-datamining.herokuapp.com/mahasiswa/${router.query.id}`, {
             method: "GET",
         })
-            .then((res) => res.json()
-            )
-            .then((data) => {
-                setState(data);
-            })
+        .then((res) => res.json()
+        )
+        .then((data) => {
+            setState(data);
+        })
     }
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {}
 
@@ -40,14 +40,15 @@ function Panduan() {
 
         console.log(router.query.id, 'ini id')
 
-        const req = fetch(`https://backend-datamining.herokuapp.com/mahasiswa/${router.query.id}`, {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/mahasiswa/${router.query.id}`, {
             method: "PUT",
             body: JSON.stringify(data),
-        })
-
-        router.push({
-            pathname: "/panduan",
+        }).then( () => {
+            router.push({
+                pathname: "/panduan",
+            });
         });
+
     };
 
     function handleChange(e) {

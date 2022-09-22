@@ -37,45 +37,44 @@ function Panduan() {
     const fetchData = async () => {
         const req = await fetch(`https://backend-datamining.herokuapp.com/data-edit/${router.query.id}`, {
             method: "GET",
-        })
-            .then((res) => res.json()
-            )
-            .then((data) => {
-                console.log(data, 'ini datanya')
-                // setState(data);
-                setState({
-                    umur : data['umur'],
-                    tinggi : data['tinggi_badan'],
-                    berat : data['berat_badan'],
-                    jenis_kelamin : data['jenis_kelamin'],
-                    kelurahan : data['alamat_kelurahan'],
-                    kecamatan : data['alamat_kecamatan'],
-                    kab_kota : data['alamat_kota'],
-                    pekerjaan_ayah : data['pekerjaan_ayah'],
-                    pekerjaan_ibu : data['pekerjaan_ibu'],
-                    pendapatan : data['pendapatan'],
-                    diabetes_anak : data['diabetes_anak'],
-                    vaksin_bcg : data['vaksin_bcg'],
-                    riwayat_opname : data['riwayat_opname_anak'],
-                    daftar_penyakit_opname : data['penyakit_anak'],
-                    asi_eksklusif : data['asi_ekslusif'],
-                    tb_serumah : data['tb_serumah'],
-                    diabetes_ortu : data['diabetes_serumah'],
-                    riwayat_penyakit_serumah : data['penyakit_lainnya'],
-                    daftar_penyakit_serumah : data['penyakit_serumah'],
-                    luas_rumah : data['luas_rumah'],
-                    jumlah_kamar : 0,
-                    jumlah_orang : 0,
-                    sistem_ventilasi : ''
-                })
+        }).then((res) => {
+            res.json()
+        }).then((data) => {
+            console.log(data, 'ini datanya')
+            // setState(data);
+            setState({
+                umur : data['umur'],
+                tinggi : data['tinggi_badan'],
+                berat : data['berat_badan'],
+                jenis_kelamin : data['jenis_kelamin'],
+                kelurahan : data['alamat_kelurahan'],
+                kecamatan : data['alamat_kecamatan'],
+                kab_kota : data['alamat_kota'],
+                pekerjaan_ayah : data['pekerjaan_ayah'],
+                pekerjaan_ibu : data['pekerjaan_ibu'],
+                pendapatan : data['pendapatan'],
+                diabetes_anak : data['diabetes_anak'],
+                vaksin_bcg : data['vaksin_bcg'],
+                riwayat_opname : data['riwayat_opname_anak'],
+                daftar_penyakit_opname : data['penyakit_anak'],
+                asi_eksklusif : data['asi_ekslusif'],
+                tb_serumah : data['tb_serumah'],
+                diabetes_ortu : data['diabetes_serumah'],
+                riwayat_penyakit_serumah : data['penyakit_lainnya'],
+                daftar_penyakit_serumah : data['penyakit_serumah'],
+                luas_rumah : data['luas_rumah'],
+                jumlah_kamar : 0,
+                jumlah_orang : 0,
+                sistem_ventilasi : ''
             })
+        })
     }
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {}
 
@@ -85,15 +84,14 @@ function Panduan() {
 
         console.log(data, 'data')
 
-        const req = fetch(`https://backend-datamining.herokuapp.com/data-update/${router.query.id}`, {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/data-update/${router.query.id}`, {
             method: "PUT",
             body: JSON.stringify(data),
+        }).then(() => {
+            router.push({
+                pathname: "/dashboard",
+            });
         })
-            .then(() => {
-                router.push({
-                    pathname: "/dashboard",
-                });
-            })
     };
 
     function handleChange(e) {

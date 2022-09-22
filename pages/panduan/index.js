@@ -26,19 +26,16 @@ function Panduan() {
             // headers: {'Content-type': 'application/json'},
             body: JSON.stringify(data),
         })
-        // Router.push("/dashboard")
-        // }
     };
 
     const fetchData = async () => {
         const req = await fetch(`https://backend-datamining.herokuapp.com/mahasiswa`, {
             method: "GET",
         })
-            .then((res) => res.json()
-            )
-            .then((data) => {
-                setData(data)
-            })
+        .then((res) => res.json())
+        .then((data) => {
+            setData(data)
+        })
     }
 
     useEffect(() => {

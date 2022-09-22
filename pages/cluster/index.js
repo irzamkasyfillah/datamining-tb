@@ -31,17 +31,16 @@ function Cluster() {
             const req = await fetch(`https://backend-datamining.herokuapp.com/cluster`, {
                 method: "GET",
             })
-                .then((res) => res.json())
-                .then((data) => {
-                    // localStorage.setItem("result2", JSON.stringify(data))
-                    if (data) {
-                        setData(data)
-                        setLoading(false)
-                        console.log('sudah load', data)
-                        setReg(false)
-                    }
-                })
-            // router.reload(window.location.pathname)
+            .then((res) => res.json())
+            .then((data) => {
+                // localStorage.setItem("result2", JSON.stringify(data))
+                if (data) {
+                    setData(data)
+                    setLoading(false)
+                    console.log('sudah load', data)
+                    setReg(false)
+                }
+            })
         }
     }
 

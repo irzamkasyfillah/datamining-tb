@@ -31,30 +31,26 @@ function Asosiasi() {
                 body: data,
             }).then((req) => {
                 setLoading(false);
-
-                // return req.json()
+            }).then(() => {
+                fetchData()
             });
-            fetchData()
         }
     };
 
-    const handleAsosiasi = () => {
-        const req = fetch(`https://backend-datamining.herokuapp.com/run_asosiasi`, {
+    const handleAsosiasi = async () => {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/run_asosiasi`, {
             method: "POST",
         })
-        // Router.push({
-        //   pathname: "/asosiasi",
-        //   query: { generate: 1 },
-        // });
     };
 
-    const handleCluster = () => {
-        const req = fetch(`https://backend-datamining.herokuapp.com/run_cluster`, {
+    const handleCluster = async () => {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/run_cluster`, {
             method: "POST",
-        })
-        Router.push({
-            pathname: "/cluster",
-        });
+        }).then(() => {
+            Router.push({
+                pathname: "/cluster",
+            });
+        } )
     };
 
     const handleAddNewData = () => {
@@ -63,27 +59,25 @@ function Asosiasi() {
         });
     };
 
-    const handleDeleteAllData = () => {
-        const req = fetch(`https://backend-datamining.herokuapp.com/data-delete-all`, {
+    const handleDeleteAllData = async () => {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/data-delete-all`, {
             method: "DELETE"
+        }).then(() => {
+            setShowModal(false)
+            Router.reload(window.location.pathname)
         })
-            .then(() => {
-                // fetchData()
-                setShowModal(false)
-                Router.reload(window.location.pathname)
-            })
     };
 
     const fetchData = async () => {
         const req = await fetch(`https://backend-datamining.herokuapp.com/get_data`, {
             method: "GET",
+        }).then((res) => {
+            res.json()
+        }).then((data) => {
+            console.log(data, 'ini data dashobard table')
+            setData(data)
+            setLoading(false)
         })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data, 'ini data dashobard table')
-                setData(data)
-                setLoading(false)
-            })
     }
 
     useEffect(() => {

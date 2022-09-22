@@ -19,13 +19,12 @@ export function DashboardTable({data = []}) {
         });
     }
 
-    const handleDelete = (id) => {
-        const req = fetch(`https://backend-datamining.herokuapp.com/data-delete/${id}`, {
+    const handleDelete = async (id) => {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/data-delete/${id}`, {
             method: "DELETE"
-        })
-            .then(() => {
-                Router.reload(window.location.pathname)
-            })
+        }).then(() => {
+            Router.reload(window.location.pathname)
+        });
     }
 
     const columns = [

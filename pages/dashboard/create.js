@@ -41,15 +41,15 @@ function Panduan() {
 
         console.log(data, 'data')
 
-        const req = fetch(`https://backend-datamining.herokuapp.com/data-create`, {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/data-create`, {
             method: "POST",
             // headers: {'Content-type': 'application/json'},
             body: JSON.stringify(data),
+        }).then(()=> {
+            Router.push({
+                pathname: "/dashboard",
+            });
         })
-
-        Router.push({
-            pathname: "/dashboard",
-        });
     };
 
     function handleChange(e) {

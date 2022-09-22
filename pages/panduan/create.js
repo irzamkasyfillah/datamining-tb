@@ -10,7 +10,7 @@ function Panduan() {
         kelas: ""
     });
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {}
 
@@ -20,15 +20,16 @@ function Panduan() {
 
         console.log(JSON.stringify(data), 'data')
 
-        const req = fetch(`https://backend-datamining.herokuapp.com/mahasiswa`, {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/mahasiswa`, {
             method: "POST",
             // headers: {'Content-type': 'application/json'},
             body: JSON.stringify(data),
-        })
-
-        Router.push({
-            pathname: "/panduan",
+        }).then( () => {
+            Router.push({
+                pathname: "/panduan",
+            });
         });
+
     };
 
     function handleChange(e) {

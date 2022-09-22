@@ -19,12 +19,13 @@ export function Data_Table({data = []}) {
         });
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         console.log(id)
-        const req = fetch(`https://backend-datamining.herokuapp.com/delete/${id}`, {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/delete/${id}`, {
             method: "DELETE"
-        })
-        Router.reload(window.location.pathname)
+        }).then( () => {
+            Router.reload(window.location.pathname)
+        });
     }
 
     const columns = [

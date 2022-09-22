@@ -26,26 +26,24 @@ class Home extends React.Component {
     const data = new FormData()
     data.append("uploaded_file", files)
     console.log(data)
-    const req = fetch(`https://backend-datamining.herokuapp.com/uploadfile`, {
+    const req = await fetch(`https://backend-datamining.herokuapp.com/uploadfile`, {
       method: "POST",
       body: data,
-
-    })
-    .then((req) => {
+    }).then((req) => {
       this.handleGenerateData()
       // return req.json()
-    })
-    Router.push("/dashboard")
+    }).then( () => {
+      Router.push("/dashboard")
+    });
   }
 
 
   handleGenerateData = async () => {
-    const req = fetch(`https://backend-datamining.herokuapp.com/asosiasi`, {
+    const req = await fetch(`https://backend-datamining.herokuapp.com/asosiasi`, {
       method: "GET",
-    })
-    .then((req) => {
-    console.log(req, req.json())
-    return req.json()
+    }).then((req) => {
+      console.log(req, req.json())
+      return req.json()
     })
   }
 
