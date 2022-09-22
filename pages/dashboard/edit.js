@@ -37,9 +37,8 @@ function Panduan() {
     const fetchData = async () => {
         const req = await fetch(`https://backend-datamining.herokuapp.com/data-edit/${router.query.id}`, {
             method: "GET",
-        }).then((res) => {
-            res.json()
-        }).then((data) => {
+        }).then((res) => res.json())
+        .then((data) => {
             console.log(data, 'ini datanya')
             // setState(data);
             setState({

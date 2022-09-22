@@ -17,8 +17,7 @@ function Panduan() {
         const req = await fetch(`https://backend-datamining.herokuapp.com/mahasiswa/${router.query.id}`, {
             method: "GET",
         })
-        .then((res) => res.json()
-        )
+        .then((res) => res.json())
         .then((data) => {
             setState(data);
         })

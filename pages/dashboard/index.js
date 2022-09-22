@@ -68,12 +68,11 @@ function Asosiasi() {
         })
     };
 
-    const fetchData = async () => {
-        const req = await fetch(`https://backend-datamining.herokuapp.com/get_data`, {
+    const fetchData = () => {
+        const req = fetch(`https://backend-datamining.herokuapp.com/get_data`, {
             method: "GET",
-        }).then((res) => {
-            res.json()
-        }).then((data) => {
+        }).then((res) => res.json())
+        .then((data) => {
             console.log(data, 'ini data dashobard table')
             setData(data)
             setLoading(false)

@@ -31,9 +31,10 @@ class Home extends React.Component {
       body: data,
     }).then((req) => {
       this.handleGenerateData()
-      // return req.json()
     }).then( () => {
-      Router.push("/dashboard")
+      Router.push({
+        pathname: "/dashboard"
+      });
     });
   }
 
