@@ -380,7 +380,7 @@ const Map = (props) => {
     }
 
     const handleCluster = () => {
-        const req = fetch(`http://127.0.0.1:8080/run_cluster`, {
+        const req = fetch(`https://backend-datamining.herokuapp.com/run_cluster`, {
             method: "POST",
         })
         Router.push({

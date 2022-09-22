@@ -29,7 +29,7 @@ function Asosiasi() {
     setLoading(true)
     const dataExist = localStorage.getItem("result")
      if (!dataExist) {
-      const req = fetch(`http://127.0.0.1:8080/asosiasi`, {
+      const req = fetch(`https://backend-datamining.herokuapp.com/asosiasi`, {
         method: "GET",
       })
       .then((res) => res.json())

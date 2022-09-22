@@ -20,7 +20,7 @@ export function DashboardTable({data = []}) {
     }
 
     const handleDelete = (id) => {
-        const req = fetch(`http://127.0.0.1:8080/data-delete/${id}`, {
+        const req = fetch(`https://backend-datamining.herokuapp.com/data-delete/${id}`, {
             method: "DELETE"
         })
             .then(() => {

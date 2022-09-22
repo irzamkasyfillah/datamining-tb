@@ -14,7 +14,7 @@ function Panduan() {
     const router = useRouter()
 
     const fetchData = async () => {
-        const req = await fetch(`http://127.0.0.1:8080/edit/${router.query.id}`, {
+        const req = await fetch(`https://backend-datamining.herokuapp.com/mahasiswa/${router.query.id}`, {
             method: "GET",
         })
             .then((res) => res.json()
@@ -40,7 +40,7 @@ function Panduan() {
 
         console.log(router.query.id, 'ini id')
 
-        const req = fetch(`http://127.0.0.1:8080/update/${router.query.id}`, {
+        const req = fetch(`https://backend-datamining.herokuapp.com/mahasiswa/${router.query.id}`, {
             method: "PUT",
             body: JSON.stringify(data),
         })
